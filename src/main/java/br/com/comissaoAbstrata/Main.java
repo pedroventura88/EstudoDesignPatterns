@@ -1,5 +1,7 @@
 package br.com.comissaoAbstrata;
 
+import br.com.comissaoAbstrata.Funcionario.FuncionarioAbstract;
+
 import java.util.List;
 
 public class Main {
@@ -7,12 +9,12 @@ public class Main {
 
         List<FuncionarioAbstract> listaDb = FuncionarioDBMock.listaDeFuncionarios();
 
-        listaDb.forEach(objeto -> {
-            Venda venda = new Venda(objeto, objeto.getSalario());
+        listaDb.forEach(funcionario -> {
+            Venda venda = new Venda(funcionario);
             double comissao = venda.calcularComissao();
 
-            System.out.println("Funcionário: " + objeto.getNome() + " -  Comissão: " + comissao + " | Salario: "
-                    + objeto.getSalario() + " | TOTAL = " + (objeto.getSalario() + comissao) + " | Cargo: " + objeto.getCargo());
+            System.out.println("Funcionário: " + funcionario.getNome() + " -  Comissão: " + comissao + " | Salario: "
+                    + funcionario.getSalario() + " | TOTAL = " + (funcionario.getSalario() + comissao) + " | Cargo: " + funcionario.getCargo());
         });
 
     }
