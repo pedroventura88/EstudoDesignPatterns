@@ -1,15 +1,15 @@
 package br.com.comissaoAbstrata;
 
+import br.com.comissaoAbstrata.Funcionario.FuncionarioAbstract;
+
 public class Venda {
     private final FuncionarioAbstract funcionarioAbstract;
-    private final Double valor;
 
-    public Venda(FuncionarioAbstract funcionarioAbstract, Double valor) {
+    public Venda(FuncionarioAbstract funcionarioAbstract) {
         this.funcionarioAbstract = funcionarioAbstract;
-        this.valor = valor;
     }
 
     public double calcularComissao() {
-        return funcionarioAbstract.calcularComissao(this.valor);
+        return funcionarioAbstract.calcularComissao();
     }
 }

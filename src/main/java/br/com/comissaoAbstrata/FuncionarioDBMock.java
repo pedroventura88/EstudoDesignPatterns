@@ -1,30 +1,40 @@
 package br.com.comissaoAbstrata;
 
+import br.com.comissaoAbstrata.Funcionario.Atendente;
+import br.com.comissaoAbstrata.Funcionario.FuncionarioAbstract;
+import br.com.comissaoAbstrata.Funcionario.Gerente;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class FuncionarioDBMock {
     public static List<FuncionarioAbstract> listaDeFuncionarios() {
-        Gerente gerente = new Gerente();
+        FuncionarioAbstract gerente = FuncionarioFactory.getInstance(EnumCargo.GERENTE);
         gerente.setSalario(2000.0);
         gerente.setNome("Zézim");
-        gerente.setCargo(FuncionarioFactory.GERENTE.name());
+        Vendas vendas = new Vendas();
+        vendas.setValor(3000);
+        gerente.setVenda(Arrays.asList(vendas));
 
-        Atendente atendente = new Atendente();
+        FuncionarioAbstract atendente = FuncionarioFactory.getInstance(EnumCargo.ATENDENTE);
         atendente.setSalario(1000.0);
+        Vendas vendas2 = new Vendas();
+        vendas2.setValor(3000);
+        atendente.setVenda(Arrays.asList(vendas2));
         atendente.setNome("carlos");
-        atendente.setCargo(FuncionarioFactory.ATENDENTE.name());
 
-        Atendente atendente2 = new Atendente();
-        atendente2.setSalario(1200.0);
+        FuncionarioAbstract atendente2 = FuncionarioFactory.getInstance(EnumCargo.ATENDENTE);
+        atendente2.setSalario(1000.0);
         atendente2.setNome("maria");
-        atendente2.setCargo(FuncionarioFactory.ATENDENTE.name());
 
-        Gerente gerente2 = new Gerente();
+        FuncionarioAbstract gerente2 = FuncionarioFactory.getInstance(EnumCargo.GERENTE);
         gerente2.setSalario(3000.0);
         gerente2.setNome("Joao");
-        gerente2.setCargo(FuncionarioFactory.GERENTE.name());
 
-        return Arrays.asList(gerente, atendente, atendente2, gerente2);
+        FuncionarioAbstract vendedor = FuncionarioFactory.getInstance(EnumCargo.VENDEDOR);
+        vendedor.setSalario(1000.0);
+        vendedor.setNome("Mario");
+
+        return Arrays.asList(gerente, atendente, atendente2, gerente2, vendedor);
     }
 }
